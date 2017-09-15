@@ -5,20 +5,18 @@ ENV CEREBRO_VERSION=0.6.6 \
 
 WORKDIR /opt/cerebro
 RUN set -ex;\
-  addgroup -S cerebro && adduser -S -G cerebro cerebro; \
+  adduser -S cerebro; \
   apk add --no-cache \
     bash \
-    ca-certificates \
+    curl \
     openjdk8-jre \
-    wget \
   ; \
-  wget --no-verbose -O cerebro.tgz https://github.com/lmenezes/cerebro/releases/download/v$CEREBRO_VERSION/cerebro-$CEREBRO_VERSION.tgz; \
-  sha512sum cerebro.tgz; \
+  curl -L -o cerebro.tgz https://github.com/lmenezes/cerebro/releases/download/v$CEREBRO_VERSION/cerebro-$CEREBRO_VERSION.tgz; \
   echo "$CEREBRO_CHECKSUM *cerebro.tgz" | sha512sum -c -; \
   tar -xf cerebro.tgz --strip-components=1; \
   rm cerebro.tgz; \
-  apk del --no-cache wget; \
-  chown -R cerebro:cerebro /opt/cerebro;
+  apk del curl; \
+  chown -R cerebro: /opt/cerebro;
 
 USER cerebro
 EXPOSE 9000
