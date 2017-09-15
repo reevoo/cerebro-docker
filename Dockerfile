@@ -15,7 +15,7 @@ RUN set -ex;\
   echo "$CEREBRO_CHECKSUM *cerebro.tgz" | sha512sum -c -; \
   tar -xf cerebro.tgz --strip-components=1; \
   rm cerebro.tgz; \
-  apk del curl; \
+  apk del --no-cache curl; \
   chown -R cerebro: /opt/cerebro;
 
 USER cerebro
