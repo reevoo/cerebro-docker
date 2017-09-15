@@ -5,7 +5,6 @@ ENV CEREBRO_VERSION=0.6.6 \
 
 WORKDIR /opt/cerebro
 RUN set -ex;\
-  adduser -S cerebro; \
   apk add --no-cache \
     bash \
     curl \
@@ -16,8 +15,8 @@ RUN set -ex;\
   tar -xf cerebro.tgz --strip-components=1; \
   rm cerebro.tgz; \
   apk del --no-cache curl; \
-  chown -R cerebro: /opt/cerebro;
+  chown -R nobody:nogroup /opt/cerebro;
 
-USER cerebro
+USER nobody
 EXPOSE 9000
 ENTRYPOINT /opt/cerebro/bin/cerebro
