@@ -19,4 +19,4 @@ RUN set -ex;\
 
 USER nobody
 EXPOSE 9000
-ENTRYPOINT /opt/cerebro/bin/cerebro
+ENTRYPOINT ["/opt/cerebro/bin/cerebro"]
