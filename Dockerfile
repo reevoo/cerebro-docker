@@ -4,7 +4,7 @@ ENV CEREBRO_VERSION=0.6.6 \
     CEREBRO_CHECKSUM=366c032f87c62995713f8f07cc93caf5238f367bda203593af51635efde33bb43bc69fcfd0e91f52dc296d70695ee586cd839bf03442705f5df94d59acff9d60
 
 WORKDIR /opt/cerebro
-RUN set -ex;\
+RUN set -ex; \
   apk add --no-cache \
     bash \
     curl \
