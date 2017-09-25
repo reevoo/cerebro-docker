@@ -8,7 +8,7 @@ RUN set -ex;\
   apk add --no-cache \
     bash \
     curl \
-    openjdk8-jre \
+    openjdk8-jre-base \
   ; \
   curl -L -o cerebro.tgz https://github.com/lmenezes/cerebro/releases/download/v$CEREBRO_VERSION/cerebro-$CEREBRO_VERSION.tgz; \
   echo "$CEREBRO_CHECKSUM *cerebro.tgz" | sha512sum -c -; \
