@@ -15,11 +15,10 @@ RUN set -ex; \
   tar -xf cerebro.tgz --strip-components=1; \
   rm cerebro.tgz; \
   apk del --no-cache curl; \
-  mkdir logs data; \
-  chown nobody: logs data;
-
-ADD application.conf conf/
+  mkdir logs; \
+  chown nobody: logs;
 
 USER nobody
 EXPOSE 9000
 ENTRYPOINT ["/opt/cerebro/bin/cerebro"]
+CMD ["-Ddata.path=/tmp/cerebro.db"]
