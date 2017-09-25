@@ -15,7 +15,10 @@ RUN set -ex;\
   tar -xf cerebro.tgz --strip-components=1; \
   rm cerebro.tgz; \
   apk del --no-cache curl; \
-  chown -R nobody:nogroup /opt/cerebro;
+  mkdir logs data; \
+  chown nobody: logs data;
+
+ADD application.conf conf/
 
 USER nobody
 EXPOSE 9000
